@@ -67,8 +67,6 @@ olist-delivery-customer-satisfaction/
 ├── metabase/
 │   ├── OList_Analysis.pdf
 │   └── screenshots/
-└── docs/
-    └── hypotheses_and_findings.md   detailed results tables and data dictionary
 ```
 
 ## Data notes
