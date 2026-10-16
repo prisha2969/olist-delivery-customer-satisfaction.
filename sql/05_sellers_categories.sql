@@ -10,12 +10,6 @@
 -- mean ~32). Sellers with very large average delays (31 sellers average
 -- > 10 days late) all have fewer than 10 orders. To avoid ranking tiny
 -- sellers on noise, Q9 only considers sellers with 30+ delivered orders.
--- To reproduce the skew figures from the seller_analysis view:
---   SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY total_orders) AS median_orders,
---          ROUND(AVG(total_orders), 2) AS mean_orders,
---          COUNT(*) FILTER (WHERE avg_delay_days > 10) AS sellers_avg_delay_over_10d,
---          COUNT(*) FILTER (WHERE total_orders >= 10)  AS sellers_with_10plus_orders
---   FROM seller_analysis;
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------
@@ -56,7 +50,7 @@ ORDER BY late_delivery_percentage DESC, late_orders DESC;
 -- Q10. Which categories have a customer-experience problem?
 -- Categories with 100+ orders. Category names are in Portuguese as in the
 -- source data (the dashboard shows English names via the dataset's
--- translation table). One group has a NULL category name (1,451 orders).
+-- translation table). 
 -- Key pattern: some categories have poor reviews despite fair delivery:
 --   fashion_roupa_masculina  4.72% late, 26.13% poor reviews
 --   moveis_escritorio        8.05% late, 22.80% poor reviews
