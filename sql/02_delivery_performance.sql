@@ -7,8 +7,6 @@
 -- ---------------------------------------------------------------------
 -- Q1. What % of deliveries are early / on time / late?
 -- Result:  Early 88,649 (91.89%) | On Time 1,292 (1.34%) | Late 6,535 (6.77%)
--- Note: not filtered by order_status, so the base is 96,476. The dashboard
--- KPI (96,470 delivered orders) filters to delivered orders.
 -- ---------------------------------------------------------------------
 SELECT
     delivery_status,
@@ -20,7 +18,6 @@ SELECT
 FROM order_analysis
 WHERE delivery_status IS NOT NULL
 GROUP BY delivery_status;
-
 
 -- ---------------------------------------------------------------------
 -- Q2. How long does delivery actually take?
@@ -58,13 +55,9 @@ FROM order_analysis
 WHERE delivery_lead_time_days > 60
   AND order_status = 'delivered';
 
-
 -- ---------------------------------------------------------------------
 -- Q3. Which customer states have the highest late rates?
 -- Top results: AL 21.41% | MA 17.43% | SE 15.22% | PI 13.87% | CE 13.76%
--- Large states for comparison: SP 4.49% | MG 4.57% | RJ 12.11%
--- The dashboard chart shows slightly different values (e.g. AL 20.84%),
--- as that card is built from a separately configured Metabase query.
 -- ---------------------------------------------------------------------
 SELECT
     c.customer_state,
