@@ -1,0 +1,5 @@
+# Raw Olist data is not redistributed here - download from Kaggle
+*.csv
+data/
+.DS_Store
+*.log
