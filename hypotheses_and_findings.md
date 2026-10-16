@@ -133,14 +133,6 @@ Audio is the one category where both delivery and product experience look weak.
 These are associations, not proven causes. Each action should be piloted and
 measured before wide rollout.
 
-## Limitations
-
-- Association, not causation: no controls for category, region or seller quality.
-- Repeat purchase has low statistical power (3% of customers over a ~2-year window); no significance tests were run.
-- Reviews are voluntary, so there may be response bias.
-- Q4-Q6 join reviews at order level, so orders with multiple reviews are counted more than once.
-- Some dashboard cards use separately configured queries and differ from the SQL files by up to ~0.6 points; patterns are unchanged.
-
 ## Data dictionary (key fields)
 
 | Field | Meaning |
