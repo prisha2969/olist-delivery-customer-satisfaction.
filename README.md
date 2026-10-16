@@ -94,13 +94,6 @@ olist-delivery-customer-satisfaction/
   two-year window, so small gaps (e.g. 4.20 vs 4.15) should be read as directional.
   No significance tests were run.
 - **Reviews are voluntary**, so there may be response bias.
-- **Reviews are joined at order level** in Q4-Q6; the few orders with multiple
-  reviews are counted more than once. Q8-Q10 pre-aggregate reviews per order.
-- **Freight burden buckets** use fixed cutoffs and item-level ratios joined to
-  order-level reviews.
-- **Small dashboard differences.** A few Metabase cards (late rate by state,
-  category average reviews) use separately configured queries and differ from the
-  SQL files by up to ~0.6 points. The patterns and rankings are unchanged.
 
 ## How to reproduce
 
@@ -116,4 +109,4 @@ olist-delivery-customer-satisfaction/
 
 ## Tools
 
-PostgreSQL (CTEs, window functions, `FILTER` aggregates, views) · pgAdmin · Metabase
+· PostgreSQL pgAdmin · Metabase
