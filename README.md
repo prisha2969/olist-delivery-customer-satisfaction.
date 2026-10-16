@@ -69,23 +69,6 @@ olist-delivery-customer-satisfaction/
 │   └── screenshots/
 ```
 
-## Data notes
-
-- **`customer_id` vs `customer_unique_id`.** Olist generates a new `customer_id`
-  for every order, so counting it just counts orders. All repeat-behaviour
-  analysis uses `customer_unique_id`, which identifies a real person across orders.
-- **Delivery status** compares the actual delivery date with the estimated date at
-  day granularity. About 92% of orders arrive "early", which is consistent with
-  conservative delivery estimates.
-- **Seller analysis** is limited to sellers with 30+ orders. The seller base is
-  heavily skewed (median 6 orders, mean ~32), and all 31 sellers averaging more
-  than 10 days late have fewer than 10 orders, so ranking small sellers would mostly
-  rank noise.
-- **A data-quality fix.** An early version of the customer view also grouped by
-  city, which split customers who moved into several rows. Correcting it to group by
-  `customer_unique_id` alone moved the repeat rate from 2.89% to 3.00%. The
-  conclusions did not change.
-
 ## Limitations
 
 - **Association, not causation.** Late orders may also differ in category, region
