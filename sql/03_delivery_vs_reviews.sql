@@ -3,10 +3,6 @@
 -- Do delivery performance and freight affect review scores? (Q4-Q6)
 -- Tests H1 and H3.
 -- Requires: 01_views.sql
---
--- Known limitation: Q4-Q6 join order_reviews directly, so the few orders
--- with more than one review count more than once. (Q8 and Q9 pre-aggregate
--- reviews per order instead.) The effect on results is very small.
 -- ---------------------------------------------------------------------
 
 -- ---------------------------------------------------------------------
@@ -58,8 +54,6 @@ ORDER BY MIN(oa.delivery_delay_days) ASC;
 -- Result:  Low 4.07 | Medium 4.06 | High 4.03 | Very high 3.97
 -- Only ~0.10 points across the whole range, vs ~2.0 for late delivery.
 -- Bucket cutoffs (0.134 / 0.231 / 0.393) are hardcoded.
--- Item-level ratios are joined to order-level reviews, so multi-item
--- orders carry more weight.
 -- ---------------------------------------------------------------------
 WITH freight_calc AS (
     SELECT
