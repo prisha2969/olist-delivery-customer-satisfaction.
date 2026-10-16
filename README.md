@@ -95,18 +95,6 @@ olist-delivery-customer-satisfaction/
   No significance tests were run.
 - **Reviews are voluntary**, so there may be response bias.
 
-## How to reproduce
-
-1. Download the dataset from
-   [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and load the
-   CSVs into PostgreSQL as tables named `orders`, `customers`, `order_items`,
-   `order_reviews`, `sellers` and `products`. The raw data is not included in this
-   repo; check the dataset page for its license terms.
-2. Run `sql/01_views.sql`, then the numbered files in order.
-3. (Optional) Connect Metabase to the database and rebuild the dashboard cards from
-   the queries. The dashboard filters (date, customer state, delivery status,
-   product category) are Metabase dashboard filters.
-
 ## Tools
 
 · PostgreSQL pgAdmin · Metabase
