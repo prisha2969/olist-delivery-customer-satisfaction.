@@ -54,7 +54,16 @@ ORDER BY MIN(oa.delivery_delay_days) ASC;
 -- Result:  Low 4.07 | Medium 4.06 | High 4.03 | Very high 3.97
 -- Only ~0.10 points across the whole range, vs ~2.0 for late delivery.
 -- Bucket cutoffs (0.134 / 0.231 / 0.393) are hardcoded.
+'''SELECT
+    PERCENTILE_CONT(0.25)
+        WITHIN GROUP (ORDER BY freight_ratio) AS q1,
+    PERCENTILE_CONT(0.50)
+        WITHIN GROUP (ORDER BY freight_ratio) AS median,
+    PERCENTILE_CONT(0.75)
+        WITHIN GROUP (ORDER BY freight_ratio) AS q3
+FROM freight_calc;'''
 -- ---------------------------------------------------------------------
+
 WITH freight_calc AS (
     SELECT
         oi.order_id,
