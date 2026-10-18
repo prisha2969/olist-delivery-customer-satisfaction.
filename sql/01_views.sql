@@ -1,8 +1,6 @@
 -- =====================================================================
 -- 01_views.sql
 -- Analysis views used by all later queries (PostgreSQL).
--- Run this file first. Order matters: seller_analysis depends on
--- order_analysis.
 -- Source tables: orders, customers, order_items, order_reviews,
 --                sellers, products (Olist Brazilian E-Commerce dataset)
 -- =====================================================================
