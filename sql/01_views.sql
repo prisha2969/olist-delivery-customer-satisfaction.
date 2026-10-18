@@ -4,18 +4,12 @@
 -- Source tables: orders, customers, order_items, order_reviews,
 --                sellers, products (Olist Brazilian E-Commerce dataset)
 -- =====================================================================
-
-DROP VIEW IF EXISTS seller_analysis;
-DROP VIEW IF EXISTS customer_analysis;
-DROP VIEW IF EXISTS order_analysis;
-
--- ---------------------------------------------------------------------
 -- order_analysis: one row per order with delivery metrics.
 --   delivery_lead_time_days = delivered date - purchase date
 --   delivery_delay_days     = delivered date - estimated date
 --                             (negative = early, 0 = on time, >0 = late)
 -- Notes:
---   * Day granularity (dates, not timestamps): "On Time" means delivered
+--   * "On Time" means delivered
 --     on the same calendar day as the estimate.
 --   * delivery_status is NULL when the delivered or estimated date is
 --     missing (e.g. undelivered / cancelled orders).
