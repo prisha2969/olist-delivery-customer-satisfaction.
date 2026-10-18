@@ -28,33 +28,6 @@ SELECT
     MIN(delivery_lead_time_days) AS fastest_delivery,
     MAX(delivery_lead_time_days) AS slowest_delivery
 FROM order_analysis;
-
--- Data check: inspect extreme lead times (> 60 days)
-SELECT
-    oa.order_id,
-    oa.order_status,
-    oa.order_purchase_timestamp,
-    o.order_delivered_carrier_date,
-    o.order_delivered_customer_date,
-    o.order_estimated_delivery_date,
-    oa.delivery_lead_time_days,
-    oa.delivery_delay_days
-FROM order_analysis oa
-JOIN orders o ON oa.order_id = o.order_id
-WHERE oa.delivery_lead_time_days > 60
-ORDER BY oa.delivery_lead_time_days DESC
-LIMIT 20;
-
--- Data check: share of delivered orders taking > 60 days
-SELECT
-    COUNT(delivery_lead_time_days) AS extreme_orders,
-    ROUND(COUNT(delivery_lead_time_days)::numeric /
-          (SELECT COUNT(*) FROM order_analysis WHERE order_status = 'delivered') * 100,
-          2) AS extreme_percentage
-FROM order_analysis
-WHERE delivery_lead_time_days > 60
-  AND order_status = 'delivered';
-
 -- ---------------------------------------------------------------------
 -- Q3. Which customer states have the highest late rates?
 -- Top results: AL 21.41% | MA 17.43% | SE 15.22% | PI 13.87% | CE 13.76%
